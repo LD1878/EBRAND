@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EBRAND Risk Assessment: Felco</title>
+    <style>
+        /* --- GLOBAL RESET --- */
+        body { margin: 0; padding: 0; background-color: #F0F2F5; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1e293b; }
+        
+        /* --- LAYOUT CONTAINER --- */
+        .wrapper { width: 100%; padding: 40px 20px; box-sizing: border-box; display: flex; justify-content: center; }
+        .report-container { max-width: 680px; width: 100%; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.08); }
+        
+        /* --- TYPOGRAPHY --- */
+        h1 { margin: 0 0 10px 0; font-size: 26px; font-weight: 800; color: #0f172a; letter-spacing: -0.5px; }
+        h2 { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #64748b; margin-top: 30px; margin-bottom: 15px; border-bottom: 1px solid #e2e8f0; padding-bottom: 5px; }
+        p { margin: 0 0 16px 0; font-size: 16px; line-height: 1.6; color: #475569; }
+        
+        /* --- HEADER --- */
+        .header { background-color: #0B1E3D; padding: 40px 30px; text-align: center; background-image: linear-gradient(135deg, #0B1E3D 0%, #1e3a8a 100%); }
+        .badge { display: inline-block; background: rgba(239, 68, 68, 0.15); color: #ef4444; font-size: 11px; font-weight: 800; text-transform: uppercase; padding: 4px 8px; border-radius: 4px; letter-spacing: 0.5px; border: 1px solid rgba(239, 68, 68, 0.3); margin-bottom: 15px; }
+
+        /* --- EVIDENCE GRID --- */
+        .evidence-grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin-bottom: 30px; }
+        @media (min-width: 500px) { .evidence-grid { grid-template-columns: 1fr 1fr; } }
+
+        /* --- THE MAGIC CARD --- */
+        .evidence-card {
+            background: #fff;
+            border-radius: 8px;
+            /* The 'Pretty' Lift Effect */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            position: relative;
+            border: 1px solid #e2e8f0;
+            cursor: crosshair;
+            overflow: hidden;
+        }
+
+        .image-frame {
+            height: 200px; /* Fixed height for uniformity */
+            overflow: hidden;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .evidence-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top; /* UX TRICK: Always show the website header/logo */
+            transition: transform 0.5s ease;
+        }
+
+        .meta-data { padding: 12px 15px; background: #f8fafc; }
+        .meta-label { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; }
+        .meta-value { font-size: 13px; font-weight: 600; color: #334155; margin-top: 2px; }
+
+        /* --- HOVER EFFECTS --- */
+        /* When hovering the card, lift the whole card */
+        .evidence-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.15);
+            border-color: #3b82f6;
+            z-index: 10;
+        }
+        /* When hovering, also slowly zoom the image inside */
+        .evidence-card:hover img {
+            transform: scale(1.1);
+        }
+
+        /* --- CALL TO ACTION --- */
+        .cta-section { text-align: center; padding: 40px 30px; background: #f8fafc; border-top: 1px solid #e2e8f0; }
+        .btn {
+            background-color: #0B1E3D; color: #fff; padding: 16px 32px; border-radius: 6px; text-decoration: none; font-weight: 600; display: inline-block;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: background 0.2s;
+        }
+        .btn:hover { background-color: #2563eb; }
+
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="report-container">
+        
+        <div class="header">
+            <img src="https://ebrand.com/wp-content/uploads/2020/09/ebrand-logo-white.svg" width="160" alt="EBRAND">
+        </div>
+
+        <div style="padding: 40px 30px;">
+            <div class="badge">Critical Brand Alert</div>
+            <h1>Digital Risk Report: Felco</h1>
+            <p><strong>To: Mr. Kopietzki</strong></p>
+            <p>We have identified high-risk unauthorized domains mimicking the Felco brand. These assets are currently active and capable of processing payments.</p>
+
+            <h2>Evidence A: The "Clone" Shop</h2>
+            <p style="font-size: 14px;">This domain (gradenpruningshears.com) utilizes official Felco assets to create a "Mono-brand" environment, increasing trust for unsuspecting victims.</p>
+            
+            <div class="evidence-card" style="margin-bottom: 30px;">
+                <div class="image-frame" style="height: 280px;"> <img src="./evidence-mono.jpg" alt="Fake Mono Brand Shop">
+                </div>
+                <div class="meta-data">
+                    <div class="meta-label">Threat Vector</div>
+                    <div class="meta-value">Visual Identity Theft / Payment Fraud</div>
+                </div>
+            </div>
+
+            <h2>Evidence B: The Discount Networks</h2>
+            <p style="font-size: 14px;">These sites (gardenoutlook.com, etc.) use aggressive "Sale" badging to trigger impulse purchases.</p>
+
+            <div class="evidence-grid">
+                <div class="evidence-card">
+                    <div class="image-frame">
+                        <img src="./evidence-grid.jpg" alt="Fake Product Grid">
+                    </div>
+                    <div class="meta-data">
+                        <div class="meta-label">Pattern Detected</div>
+                        <div class="meta-value">Unrealistic Discounts (-60%)</div>
+                    </div>
+                </div>
+
+                <div class="evidence-card">
+                    <div class="image-frame">
+                        <img src="./evidence-discount.jpg" alt="Fake Discount Site">
+                    </div>
+                    <div class="meta-data">
+                        <div class="meta-label">Language</div>
+                        <div class="meta-value">German (Targeted Region)</div>
+                    </div>
+                </div>
+            </div>
+
+            <p><strong>EBRAND Analysis:</strong> The consistent use of "Sale" stickers and IP-blocking technology suggests this is an organized network, not isolated incidents.</p>
+
+        </div>
+
+        <div class="cta-section">
+            <p style="margin-bottom: 20px; font-weight: 500;">Review the full enforcement strategy:</p>
+            <a href="mailto:psujeta@ebrand.com" class="btn">Schedule Intelligence Briefing</a>
+            <p style="font-size: 12px; margin-top: 15px; color: #94a3b8;">Confidential Report prepared by Pawel Sujeta</p>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
