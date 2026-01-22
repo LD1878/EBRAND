@@ -3,142 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EBRAND Risk Assessment: Felco</title>
+    <title>CONFIDENTIAL: EBRAND Forensic Analysis</title>
     <style>
-        /* --- GLOBAL RESET --- */
-        body { margin: 0; padding: 0; background-color: #F0F2F5; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1e293b; }
+        /* --- PREMIUM UX RESET --- */
+        body { margin: 0; padding: 0; background-color: #eef2f6; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #334155; }
+        .wrapper { width: 100%; padding: 40px 20px; display: flex; justify-content: center; }
         
-        /* --- LAYOUT CONTAINER --- */
-        .wrapper { width: 100%; padding: 40px 20px; box-sizing: border-box; display: flex; justify-content: center; }
-        .report-container { max-width: 680px; width: 100%; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.08); }
-        
+        /* --- THE CARD --- */
+        .report-card { 
+            max-width: 720px; 
+            width: 100%; 
+            background-color: #ffffff; 
+            border-radius: 12px; 
+            overflow: hidden; 
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15); 
+        }
+
+        /* --- THE NEW GREY HEADER --- */
+        .header { 
+            background-color: #334155; /* Sophisticated Slate Grey */
+            padding: 35px 40px; 
+            border-bottom: 4px solid #cbd5e1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
         /* --- TYPOGRAPHY --- */
-        h1 { margin: 0 0 10px 0; font-size: 26px; font-weight: 800; color: #0f172a; letter-spacing: -0.5px; }
-        h2 { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #64748b; margin-top: 30px; margin-bottom: 15px; border-bottom: 1px solid #e2e8f0; padding-bottom: 5px; }
-        p { margin: 0 0 16px 0; font-size: 16px; line-height: 1.6; color: #475569; }
+        h1 { margin: 0; font-size: 24px; font-weight: 700; color: #1e293b; letter-spacing: -0.5px; }
+        h2 { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; margin: 30px 0 15px 0; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; }
+        p { margin: 0 0 16px 0; font-size: 15px; line-height: 1.6; color: #475569; }
         
-        /* --- HEADER --- */
-        .header { background-color: #0B1E3D; padding: 40px 30px; text-align: center; background-image: linear-gradient(135deg, #0B1E3D 0%, #1e3a8a 100%); }
-        .badge { display: inline-block; background: rgba(239, 68, 68, 0.15); color: #ef4444; font-size: 11px; font-weight: 800; text-transform: uppercase; padding: 4px 8px; border-radius: 4px; letter-spacing: 0.5px; border: 1px solid rgba(239, 68, 68, 0.3); margin-bottom: 15px; }
+        /* --- METRICS GRID (ADDING WEIGHT) --- */
+        .metrics-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 15px; 
+            background: #f8fafc; 
+            padding: 20px; 
+            border-radius: 8px; 
+            border: 1px solid #e2e8f0; 
+            margin-bottom: 30px;
+        }
+        .metric { text-align: left; }
+        .metric-label { font-size: 11px; text-transform: uppercase; color: #64748b; font-weight: 700; }
+        .metric-value { font-size: 22px; font-weight: 800; color: #0f172a; margin-top: 5px; }
+        .risk-high { color: #e11d48; }
 
-        /* --- EVIDENCE GRID --- */
-        .evidence-grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin-bottom: 30px; }
-        @media (min-width: 500px) { .evidence-grid { grid-template-columns: 1fr 1fr; } }
-
-        /* --- THE MAGIC CARD --- */
-        .evidence-card {
-            background: #fff;
-            border-radius: 8px;
-            /* The 'Pretty' Lift Effect */
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        /* --- EVIDENCE IMAGES --- */
+        .evidence-block { margin-bottom: 30px; }
+        .img-frame {
+            border: 1px solid #cbd5e1; 
+            border-radius: 6px; 
+            overflow: hidden; 
+            height: 240px; /* Uniform height */
             position: relative;
-            border: 1px solid #e2e8f0;
-            cursor: crosshair;
+            background: #f1f5f9;
+        }
+        .img-frame img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            object-position: top; /* Focus on the header of the screenshot */
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .img-frame:hover img { transform: scale(1.08); }
+        .caption { font-size: 13px; color: #64748b; margin-top: 8px; font-style: italic; }
+
+        /* --- THE BLURRED "TEASER" (PSYCHOLOGY TRICK) --- */
+        .blur-container { 
+            position: relative; 
+            background: #fff1f2; 
+            border: 1px solid #fecdd3; 
+            border-radius: 8px; 
+            padding: 20px; 
             overflow: hidden;
         }
-
-        .image-frame {
-            height: 200px; /* Fixed height for uniformity */
-            overflow: hidden;
-            border-bottom: 1px solid #f1f5f9;
-        }
-
-        .evidence-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top; /* UX TRICK: Always show the website header/logo */
-            transition: transform 0.5s ease;
-        }
-
-        .meta-data { padding: 12px 15px; background: #f8fafc; }
-        .meta-label { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; }
-        .meta-value { font-size: 13px; font-weight: 600; color: #334155; margin-top: 2px; }
-
-        /* --- HOVER EFFECTS --- */
-        /* When hovering the card, lift the whole card */
-        .evidence-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.15);
-            border-color: #3b82f6;
+        .blur-list { filter: blur(5px); user-select: none; opacity: 0.6; }
+        .blur-overlay { 
+            position: absolute; 
+            top: 0; left: 0; right: 0; bottom: 0; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            background: rgba(255,255,255,0.4);
             z-index: 10;
         }
-        /* When hovering, also slowly zoom the image inside */
-        .evidence-card:hover img {
-            transform: scale(1.1);
+        .lock-badge { 
+            background: #fff; 
+            padding: 8px 16px; 
+            border-radius: 20px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+            font-weight: 700; 
+            font-size: 13px; 
+            color: #e11d48;
+            display: flex; align-items: center; gap: 8px;
         }
 
-        /* --- CALL TO ACTION --- */
-        .cta-section { text-align: center; padding: 40px 30px; background: #f8fafc; border-top: 1px solid #e2e8f0; }
-        .btn {
-            background-color: #0B1E3D; color: #fff; padding: 16px 32px; border-radius: 6px; text-decoration: none; font-weight: 600; display: inline-block;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        /* --- VALUE PROP SECTION --- */
+        .value-section { background: #0f172a; color: #fff; padding: 30px; margin-top: 40px; text-align: center; }
+        .value-title { font-size: 16px; font-weight: 700; margin-bottom: 10px; color: #fff; }
+        .value-text { font-size: 14px; color: #94a3b8; margin-bottom: 20px; }
+        
+        /* --- CTA BUTTON --- */
+        .btn { 
+            display: inline-block; 
+            background: #38bdf8; 
+            color: #0f172a; 
+            padding: 14px 28px; 
+            border-radius: 6px; 
+            text-decoration: none; 
+            font-weight: 700; 
             transition: background 0.2s;
         }
-        .btn:hover { background-color: #2563eb; }
+        .btn:hover { background: #0ea5e9; }
 
     </style>
 </head>
 <body>
 
 <div class="wrapper">
-    <div class="report-container">
+    <div class="report-card">
         
         <div class="header">
-            <img src="https://ebrand.com/wp-content/uploads/2020/09/ebrand-logo-white.svg" width="160" alt="EBRAND">
+            <img src="https://ebrand.com/wp-content/uploads/2020/09/ebrand-logo-white.svg" width="140" alt="EBRAND">
+            <div style="color: #94a3b8; font-size: 12px; font-weight: 600;">CONFIDENTIAL / FELCO</div>
         </div>
 
-        <div style="padding: 40px 30px;">
-            <div class="badge">Critical Brand Alert</div>
-            <h1>Digital Risk Report: Felco</h1>
-            <p><strong>To: Mr. Kopietzki</strong></p>
-            <p>We have identified high-risk unauthorized domains mimicking the Felco brand. These assets are currently active and capable of processing payments.</p>
-
-            <h2>Evidence A: The "Clone" Shop</h2>
-            <p style="font-size: 14px;">This domain (gradenpruningshears.com) utilizes official Felco assets to create a "Mono-brand" environment, increasing trust for unsuspecting victims.</p>
+        <div style="padding: 40px;">
             
-            <div class="evidence-card" style="margin-bottom: 30px;">
-                <div class="image-frame" style="height: 280px;"> <img src="./evidence-mono.jpg" alt="Fake Mono Brand Shop">
-                </div>
-                <div class="meta-data">
-                    <div class="meta-label">Threat Vector</div>
-                    <div class="meta-value">Visual Identity Theft / Payment Fraud</div>
-                </div>
-            </div>
+            <p style="color: #e11d48; font-weight: 700; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px;">• Critical Alert</p>
+            <h1>Brand Exploitation Assessment</h1>
+            <p><strong>Prepared for: Mr. Kopietzki</strong></p>
+            <p>Our autonomous crawler has mapped a network of unauthorized digital assets targeting the Felco customer base. These are not inactive domains; they are fully functional commerce traps.</p>
 
-            <h2>Evidence B: The Discount Networks</h2>
-            <p style="font-size: 14px;">These sites (gardenoutlook.com, etc.) use aggressive "Sale" badging to trigger impulse purchases.</p>
-
-            <div class="evidence-grid">
-                <div class="evidence-card">
-                    <div class="image-frame">
-                        <img src="./evidence-grid.jpg" alt="Fake Product Grid">
-                    </div>
-                    <div class="meta-data">
-                        <div class="meta-label">Pattern Detected</div>
-                        <div class="meta-value">Unrealistic Discounts (-60%)</div>
-                    </div>
+            <div class="metrics-grid">
+                <div class="metric">
+                    <div class="metric-label">Detected Infringements</div>
+                    <div class="metric-value">12 Active URLs</div>
                 </div>
-
-                <div class="evidence-card">
-                    <div class="image-frame">
-                        <img src="./evidence-discount.jpg" alt="Fake Discount Site">
-                    </div>
-                    <div class="meta-data">
-                        <div class="meta-label">Language</div>
-                        <div class="meta-value">German (Targeted Region)</div>
-                    </div>
+                <div class="metric">
+                    <div class="metric-label">Estimated Traffic Risk</div>
+                    <div class="metric-value risk-high">High Volume</div>
                 </div>
             </div>
 
-            <p><strong>EBRAND Analysis:</strong> The consistent use of "Sale" stickers and IP-blocking technology suggests this is an organized network, not isolated incidents.</p>
+            <h2>01. Identity Cloning (Highest Severity)</h2>
+            <p>The domain below (gradenpruningshears.com) scrapes your official imagery to create a mirror site. This captures high-intent traffic looking for legitimate Felco gear.</p>
+            
+            <div class="evidence-block">
+                <div class="img-frame">
+                    <img src="./evidence-mono.jpg" alt="Cloned Site Evidence">
+                </div>
+                <div class="caption">Fig A: Unauthorized use of Hero Banner & Logo Assets</div>
+            </div>
+
+            <h2>02. Pricing & Brand Dilution</h2>
+            <p>We detected "Discount Networks" offering Felco inventory at -60% MSRP. This damages your pricing power and trains customers to devalue the brand.</p>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="evidence-block">
+                    <div class="img-frame">
+                        <img src="./evidence-grid.jpg" alt="Discount Grid Evidence">
+                    </div>
+                </div>
+                <div class="evidence-block">
+                    <div class="img-frame">
+                        <img src="./evidence-discount.jpg" alt="Sale Banner Evidence">
+                    </div>
+                </div>
+            </div>
+
+            <h2>03. Additional Network Nodes</h2>
+            <p>We have identified 9 other connected domains utilizing similar IP signatures.</p>
+            
+            <div class="blur-container">
+                <div class="blur-overlay">
+                    <div class="lock-badge">
+                        <span>🔒</span> Data Restricted
+                    </div>
+                </div>
+                <div class="blur-list">
+                    <p>www.felco-discount-store.net</p>
+                    <p>www.cheappruners-german.org</p>
+                    <p>www.garden-tools-outlet-24.com</p>
+                    <p>www.felco-authorized-sale.biz</p>
+                    <p>www.original-parts-felco.com</p>
+                </div>
+            </div>
 
         </div>
 
-        <div class="cta-section">
-            <p style="margin-bottom: 20px; font-weight: 500;">Review the full enforcement strategy:</p>
-            <a href="mailto:psujeta@ebrand.com" class="btn">Schedule Intelligence Briefing</a>
-            <p style="font-size: 12px; margin-top: 15px; color: #94a3b8;">Confidential Report prepared by Pawel Sujeta</p>
+        <div class="value-section">
+            <div class="value-title">Why EBRAND?</div>
+            <p class="value-text">
+                Manual searches miss 85% of deep-web infringements. 
+                Our AI detects, documents, and prepares legal takedowns in seconds.
+                <br><br>
+                Don't let them steal another customer.
+            </p>
+            <a href="mailto:psujeta@ebrand.com" class="btn">Authorize Full Takedown Strategy</a>
         </div>
 
     </div>
